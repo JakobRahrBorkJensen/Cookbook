@@ -1,0 +1,108 @@
+[
+  {
+    "title": "Edamamebønner med spidskål og dild",
+    "summary": "Let salat med frisk sommerstemning. OBS: holder sig ikke godt i køleskab",
+    "description": "TILBEREDNING\nKom de frosne edamamebønner i en skål, og hæld kogende vand over.\nHak dilden fint, og bland hytteost, honning, dild, citronsaft og -skal.\nSmag til med salt og peber.\nHæld vandet fra edamamebønnerne, og bælg dem.\nSnit spidskålen i fine strimler.\nBland bønnerne med spidskål, og vend hytteostcremen i retten.",
+    "ingredients": [
+      {
+        "name": "Edamamebønner",
+        "amount": 200,
+        "unit": "g"
+      },
+      {
+        "name": "Hytteost",
+        "amount": 1,
+        "unit": "dl"
+      },
+      {
+        "name": "Citron",
+        "amount": 0.5,
+        "unit": "stk"
+      },
+      {
+        "name": "Spidskål",
+        "amount": 0.5,
+        "unit": "stk"
+      },
+      {
+        "name": "Honning",
+        "amount": 1,
+        "unit": "spsk"
+      },
+      {
+        "name": "Frisk dild"
+      }
+    ],
+    "estimatedTime": 20,
+    "people": 1,
+    "link": "https://livsstil.tv2.dk/mad/opskrift/edamameboenner-med-spidskaal-og-dild"
+  },
+  {
+    "title": "Spidskålssalat med dressing",
+    "summary": "Denne spidskålssalat er virkelig skøn spise. Kål salaten med æbler, spidskål, cremet dressing og det moderne touch i form af avokado, går perfekt som tilbehørs ret til kartofler og alverdens forskellige kødretter. Dette er tilfældet, fordi salaten med spidskål er mild i smagen, og ikke overdynger måltidet, som mere sommerlige salater ofte godt kan gøre det. Spidskålssalaten er cremet, saltet, sprød og sød, og kan sågar spises som måltidssalat også.",
+    "description": "Sådan gør du\nDressing:\nHak eller mos hvidløg fint og bland løget med de øvrige ingredienser til dressingen\nSalat:\nSnit spidskål meget fint og vend dressingen godt rundt i kålen\nSkær avokado og æble i tern og drys udover salaten\nRist pinjekerner på en tør og varm pande til de bliver let gyldne. Fordel pinjekernerne udover salater og drys evt. med ekstra flagesalt",
+    "ingredients": [
+      {
+        "name": "Creme fraise",
+        "amount": 2,
+        "unit": "spsk"
+      },
+      {
+        "name": "Olivenolie",
+        "amount": 1,
+        "unit": "spsk"
+      },
+      {
+        "name": "Citron saft",
+        "amount": 1,
+        "unit": "spsk"
+      },
+      {
+        "name": "Sennep",
+        "amount": 1,
+        "unit": "tsk"
+      },
+      {
+        "name": "Hvidløg",
+        "amount": 1,
+        "unit": "fed"
+      },
+      {
+        "name": "Flydende honning",
+        "amount": 2,
+        "unit": "tsk"
+      },
+      {
+        "name": "Flage salt",
+        "amount": 1,
+        "unit": "tsk"
+      },
+      {
+        "name": "Frisk kværnet peber"
+      },
+      {
+        "name": "Lille spidskål",
+        "amount": 1,
+        "unit": "stk"
+      },
+      {
+        "name": "Moden avocado",
+        "amount": 1,
+        "unit": "stk"
+      },
+      {
+        "name": "Modne æbler",
+        "amount": 2,
+        "unit": "stk"
+      },
+      {
+        "name": "Pinjekerner (eller solsikkefrø, græskarkerner mm.)",
+        "amount": 30,
+        "unit": "g"
+      }
+    ],
+    "estimatedTime": 15,
+    "people": 4,
+    "link": "https://mariavestergaard.dk/spidskaalssalat/"
+  }
+]
