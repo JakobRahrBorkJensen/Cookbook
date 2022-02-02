@@ -67,4 +67,8 @@ public interface RecipeRepository extends PagingAndSortingRepository<RecipeEntit
     @RestResource(exported = false)
     @Override
     void deleteAll();
+
+    @RestResource(exported = true)
+    @Override
+    Page<RecipeEntity> findAll(Pageable pageable);
 }

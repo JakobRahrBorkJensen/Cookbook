@@ -4,6 +4,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+/**
+ * Ingredient repository connecting application to Ingredient objects in database.
+ *
+ * All mutation API operations are not exported, leaving only query operations exposed.
+ */
 @RepositoryRestResource(collectionResourceRel = "ingredients", path = "ingredients")
 public interface IngredientRepository extends PagingAndSortingRepository<IngredientEntity, Long> {
 
