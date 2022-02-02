@@ -41,7 +41,7 @@ public class RecipeController {
      * @param pageable Pageable object allowing retrieving only one page of recipes at a time.
      * @return Titles and IDs of matching list of recipes.
      */
-    @GetMapping(path = "/recipes", produces = "application/json")
+    @GetMapping(path = "/recipes/contains", produces = "application/json")
     public ResponseEntity<List<RecipeTitleDTO>> getRecipesContainingIngredients(
             @RequestParam(name = "ingredients") List<String> ingredientNames,
             @RequestParam(name = "search_strategy") String searchStrategyString,
