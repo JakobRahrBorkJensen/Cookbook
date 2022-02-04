@@ -8,7 +8,6 @@ import jrbj.training.cookbook.recipe.search_strategy.SearchStrategies;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.OK;
 
 @Slf4j
 @AllArgsConstructor
@@ -29,30 +27,35 @@ public class RecipeController {
      * Create new recipes with ingredients.
      */
     @PostMapping(path = "/recipes", produces = "application/json")
-    public ResponseEntity<RecipeEntity> createRecipe(@Valid @RequestBody RecipeDTO recipeDto) {
-        var response = recipeService.createRecipe(recipeDto);
-        return new ResponseEntity<>(response, CREATED);
+    @ResponseStatus(CREATED)
+    public RecipeEntity createRecipe(@Valid @RequestBody RecipeDTO recipeDto) {
+        return recipeService.createRecipe(recipeDto);
     }
 
     /**
      * Get list of recipes that include specified ingredients.
      * @param ingredientNames Names of ingredients, separated by comma.
+     *                        If no ingredients are listed, all recipes will be returned
      * @param searchStrategyString Chosen search strategy. See options in {@link SearchStrategies}.
+     *                             By default this is set to "all".
      * @param pageable Pageable object allowing retrieving only one page of recipes at a time.
      * @return Titles and IDs of matching list of recipes.
      */
-    @GetMapping(path = "/recipes/contains", produces = "application/json")
-    public ResponseEntity<List<RecipeTitleDTO>> getRecipesContainingIngredients(
-            @RequestParam(name = "ingredients") List<String> ingredientNames,
-            @RequestParam(name = "search_strategy") String searchStrategyString,
+    @GetMapping(path = "/recipes", produces = "application/json")
+    public List<RecipeTitleDTO> getRecipesContainingIngredients(
+            @RequestParam(name = "ingredients", required = false, defaultValue = "") List<String> ingredientNames,
+            @RequestParam(name = "search_strategy", required = false, defaultValue = "all") String searchStrategyString,
             Pageable pageable) {
+
+        // If no ingredients are named, set strategy to none, as this strategy will then provide all recipes.
+        if (ingredientNames.isEmpty()) {
+            searchStrategyString = SearchStrategies.NONE.getName();
+        }
 
         var searchStrategy = verifySearchStrategy(searchStrategyString);
 
-        var recipeList = recipeService.getRecipesContainingIngredients(
+        return recipeService.getRecipesContainingIngredients(
                 ingredientNames, searchStrategy, pageable);
-
-        return new ResponseEntity<>(recipeList, OK);
     }
 
     /**

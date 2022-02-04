@@ -9,14 +9,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -28,7 +26,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @ControllerAdvice
-public class CookbookResponseExceptionHandler extends ResponseEntityExceptionHandler {
+public class CookbookResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     private final ObjectMapper objectMapper;
 
     /**
@@ -37,7 +35,7 @@ public class CookbookResponseExceptionHandler extends ResponseEntityExceptionHan
     @ExceptionHandler(HttpClientException.class)
     public final ResponseEntity<String> handleHttpClientException(HttpClientException ex) {
         RestControllerProblem problem = RestControllerProblem.badRequest(ex.getProblemCode(), List.of(ex.getMessage()));
-        log.error(this.formatProblem(problem));
+        log.warn(this.formatProblem(problem));
         return this.createResponseEntity(problem);
     }
 
@@ -64,20 +62,6 @@ public class CookbookResponseExceptionHandler extends ResponseEntityExceptionHan
                 .collect(Collectors.toList());
 
         RestControllerProblem problem = RestControllerProblem.badRequest("invalid-arguments", errors);
-        log.warn(this.formatProblem(problem));
-        var response = createResponseEntity(problem);
-        return new ResponseEntity<>(response.getBody(), response.getStatusCode());
-    }
-
-    /**
-     * Handles missing request params as Bad Requests, returning details on missing request parameters
-     */
-    @Override
-    protected ResponseEntity<Object> handleMissingServletRequestParameter(
-            MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        RestControllerProblem problem = RestControllerProblem.badRequest(
-                "missing-params",
-                List.of(Objects.requireNonNull(ex.getMessage())));
         log.warn(this.formatProblem(problem));
         var response = createResponseEntity(problem);
         return new ResponseEntity<>(response.getBody(), response.getStatusCode());

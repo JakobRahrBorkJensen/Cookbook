@@ -1,13 +1,11 @@
 package jrbj.training.cookbook.recipe.search_strategy;
 
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,5 +38,18 @@ class SearchStrategiesTest {
         // Then
         assertThat(searchStrategy).isNotNull();
         assertThat(searchStrategy).isEqualTo(SearchStrategies.ANY);
+    }
+
+    /* Tests that null is returned if value is not known */
+    @Test
+    void whenProvidedStringIsNotAValidOption_thenReturnsNull() {
+        // Given
+        var option = "invalid";
+
+        // When
+        var searchStrategy = SearchStrategies.get(option);
+
+        // Then
+        assertThat(searchStrategy).isNull();
     }
 }
