@@ -105,7 +105,8 @@ class RecipeControllerIntegrationTest {
                 .andExpect(jsonPath("code").value("bad-request.invalid-arguments"))
                 .andExpect(jsonPath("details").value(containsInAnyOrder(
                         "[title] Title of recipe should be set",
-                        "[description] Description of recipe should be set"))
+                        "[description] Description of recipe should be set",
+                        "[name] Name of ingredient should be set"))
                 );
     }
 
@@ -231,6 +232,7 @@ class RecipeControllerIntegrationTest {
 
     /**
      * Creates an invalid sample recipe, where title and description are null (which is invalid)
+     * and the included ingredient is without mandatory name.
      */
     private RecipeDTO invalidSampleEntity() {
         List<IngredientDTO> ingredients = new ArrayList<>();
